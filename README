@@ -1,0 +1,30 @@
+c_ex1
+ortal.netzer
+312416845
+######
+
+In this exercise, we built a program that get from the user three inputs -
+1. g - array of doubles.
+2. h - another array of doubles.
+3. n - number of times of convolution calculation.
+The program will calculate n times the convolution of g and h, and will print the histogram of the
+result. If one of the three inputs is illegal, it will print ERROR to stderr and close the program.
+
+In my solution to the exercise, I worked in stages.
+first, I built all the input functions - the functions that read the input, check if it's legal and
+convert it to an array of doubles (g, h) or to an int(n).
+After that, I worked on the normalizing and centralizing the arrays.
+
+The main work was on the convolution calculation, I built the single convolution function that gets
+g array, h array and an empty array (with zeros) that will contain the result of the convolution.
+This function calculates for each t the sum that need to be in the parameterization(t) cell in the
+result array. their are 100 't's and 100 variables in the sum for each t, and that why the running
+time will be O(n^2).
+
+The main convolution function, gets g array, h array, result array, n and original n. It will run in
+recursion n times, and will switch the g array and the result array in each call. That because after
+every calculation, we don't need the first array after the calculation, and in that way I use only 3
+arrays and not n arrays. at the end, this function will return 0 or 1 that will say which array
+contains the result.
+
+The last stage was to create the histogram of the result array.
